@@ -1,9 +1,7 @@
 import React from 'react'
 import Carousel from 'react-native-snap-carousel';
 
-import { StackScreenProps } from '@react-navigation/stack'
-import { ActivityIndicator, LogBox, ScrollView, useWindowDimensions, View } from 'react-native'
-import { RootStackParams } from '../navigation/Navigation'
+import { ActivityIndicator, ScrollView, useWindowDimensions, View, LogBox } from 'react-native';
 import { useMovies } from '../hooks/useMovies';
 import { MoviePoster } from '../components/MoviePoster';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -13,15 +11,13 @@ LogBox.ignoreLogs([
   "ViewPropTypes will be removed",
 ])
 
-interface Props extends StackScreenProps<RootStackParams,'HomeScreen'>{}
-
-export const HomeScreen = ({navigation}:Props) => {
+export const HomeScreen = () => {
 
 
   const { isLoading, nowPlaying, popular, topRated, upcoming } = useMovies()
   const {top} = useSafeAreaInsets()
 
-  const {width, height} = useWindowDimensions()
+  const {width} = useWindowDimensions()
 
   if (isLoading) {
     return (

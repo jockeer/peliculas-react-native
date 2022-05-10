@@ -3,17 +3,20 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../screens/HomeScreen';
 import { DetailScreen } from '../screens/DetailScreen';
+import { Movie } from '../interfaces/movie';
 
 export type RootStackParams = {
-    HomeScreen:undefined;
-    DetailScreen:undefined;
+  HomeScreen: undefined;
+  DetailScreen: Movie
 }
 
-const Stack = createStackNavigator();
+
+const Stack = createStackNavigator<RootStackParams>();
 
 export const Navigation =() => {
   return (
     <Stack.Navigator
+      
         screenOptions={{
             headerShown:false,
             cardStyle:{
